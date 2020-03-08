@@ -1,5 +1,4 @@
-@model MvcMovie.Models.MovieGenreViewModel
-@* IEnumerable<MvcMovie.Models.Movie>  *@
+@model IEnumerable<MvcMovie.Models.Movie> 
 
 @{
     ViewData["Title"] = "Index";
@@ -22,25 +21,27 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Movies[0].Title)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movies[0].ReleaseDate)
+               <a asp-action="Index" asp-route-sortOrder='@ViewData["DateSortParm"]'>
+                   @Html.DisplayNameFor(model => model.ReleaseDate)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movies[0].MovieGenre)
+                @Html.DisplayNameFor(model => model.MovieGenre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movies[0].Price)
+                @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movies[0].Rating)
+                @Html.DisplayNameFor(model => model.Rating)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Movies) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
